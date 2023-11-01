@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/PatLang.dir/main.cpp.o CMakeFiles/PatLang.dir/parser.cpp.o CMakeFiles/PatLang.dir/tokenizer.cpp.o -o PatLang 

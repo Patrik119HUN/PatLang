@@ -1,0 +1,3 @@
+/mnt/c/Users/patri/CLionProjects/PatLang/cmake-build-debug/CMakeFiles/PatLang.dir
+/mnt/c/Users/patri/CLionProjects/PatLang/cmake-build-debug/CMakeFiles/edit_cache.dir
+/mnt/c/Users/patri/CLionProjects/PatLang/cmake-build-debug/CMakeFiles/rebuild_cache.dir
