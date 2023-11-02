@@ -452,7 +452,8 @@ CMakeFiles/PatLang.dir/main.cpp.o: ../main.cpp \
   /usr/include/c++/11/syncstream \
   /usr/include/c++/11/version \
   ../tokenizer.h \
-  ../token_printer.h
+  ../token_printer.h \
+  ../parser.h
 
 CMakeFiles/PatLang.dir/parser.cpp.o: ../parser.cpp \
   /usr/include/stdc-predef.h \
@@ -905,7 +906,8 @@ CMakeFiles/PatLang.dir/parser.cpp.o: ../parser.cpp \
   /usr/include/c++/11/span \
   /usr/include/c++/11/source_location \
   /usr/include/c++/11/syncstream \
-  /usr/include/c++/11/version
+  /usr/include/c++/11/version \
+  ../token_printer.h
 
 CMakeFiles/PatLang.dir/tokenizer.cpp.o: ../tokenizer.cpp \
   /usr/include/stdc-predef.h \

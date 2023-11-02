@@ -1,3 +1,5 @@
+#pragma once
+
 #include "tokenizer.h"
 
 class TokenPrinter {

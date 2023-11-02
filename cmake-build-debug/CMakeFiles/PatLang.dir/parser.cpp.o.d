@@ -352,4 +352,5 @@ CMakeFiles/PatLang.dir/parser.cpp.o: \
  /usr/include/c++/11/coroutine /usr/include/c++/11/latch \
  /usr/include/c++/11/ranges /usr/include/c++/11/span \
  /usr/include/c++/11/source_location /usr/include/c++/11/syncstream \
- /usr/include/c++/11/version
+ /usr/include/c++/11/version \
+ /mnt/c/Users/patri/CLionProjects/PatLang/token_printer.h

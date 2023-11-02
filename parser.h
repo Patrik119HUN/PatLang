@@ -25,6 +25,16 @@ inline bool isDiv(TValue *val) {
 inline bool isFac(TValue *val) {
     return val->type == Tokens::OPERATOR && get<char>(val->data) == '^';
 }
+
+struct AST_Node {
+    string type;
+    string name;
+    int value = -1;
+    char op;
+    AST_Node *left = nullptr;
+    AST_Node *right = nullptr;
+};
+
 class Parser {
 public:
 
@@ -34,34 +44,46 @@ public:
 
     TValue *eat(Tokens tokens, optional<char> data = nullopt);
 
-    int expression();
+    AST_Node *
+    binary_expression(AST_Node *(Parser::*t_left)(), AST_Node *(Parser::*t_right)(), bool (*checker)(TValue *),
+                     bool (*checker2)(TValue *));
 
-    int term();
+    AST_Node *expression();
 
-    int factor();
+    AST_Node *term();
+
+    AST_Node *factor();
+
+    AST_Node *primary();
 
 
-    int primary();
-
-    int unaryExpression() {
-        eat(Tokens::OPERATOR, '-');
-        return -factor();
-    }
-
-    int parenthesizedExpression() {
+    AST_Node *parenthesizedExpression() {
         eat(Tokens::SYMBOL, '(');
-        int expr = expression();
+        auto expr = expression();
         eat(Tokens::SYMBOL, ')');
         return expr;
     }
 
-    int functionExpression() {
-        string tok = get<string>(eat(Tokens::KEYWORD)->data);
-        if (tok == "sin") return static_cast<int>(sin(parenthesizedExpression()));
-        if (tok == "cos") return static_cast<int>(cos(parenthesizedExpression()));
+    AST_Node *unaryExpression() {
+        eat(Tokens::OPERATOR, '-');
+        auto *node = new AST_Node;
+        node->type = "UnaryExpression";
+        node->value = primary()->value;
+        return node;
     }
 
-    int parse() {
+    AST_Node *functionExpression() {
+        auto token = eat(Tokens::KEYWORD);
+        //if (tok == "sin") ret = static_cast<int>(sin(parenthesizedExpression()));
+        //if (tok == "cos") ret =  static_cast<int>(cos(parenthesizedExpression()));
+        auto *node = new AST_Node;
+        node->type = "Function";
+        node->name = get<string>(token->data);
+        node->value = parenthesizedExpression()->value;
+        return node;
+    }
+
+    AST_Node *parse() {
         return expression();
     }
 
@@ -73,4 +95,5 @@ private:
                                   {'-', 1},
                                   {'*', 2},
                                   {'/', 2}};
+
 };
