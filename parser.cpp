@@ -15,48 +15,15 @@ TValue *Parser::eat(Tokens tokens, optional<char> data) {
     return token;
 }
 
-AST_Node *Parser::expression() {/*
-    int left = term();
-    while (m_lookahead != nullptr && (isAddition(m_lookahead) || isSub(m_lookahead))) {
-        if (isAddition(m_lookahead)) {
-            eat(Tokens::OPERATOR, '+');
-            int right = term();
-            left += right;
-        } else if (isSub(m_lookahead)) {
-            eat(Tokens::OPERATOR, '-');
-            int right = term();
-            left -= right;
-        }
+AST_Node *Parser::expression(int precedence) {
+    AST_Node *left = prefix();
+    while (m_lookahead != nullptr && precedence < get_precedence(get<char>(m_lookahead->data))) {
+        left = infix(left, m_lookahead->type);
     }
-    return left;*/
-    return binary_expression(&Parser::term, &Parser::term, isAddition, isSub);
+    return left;
 }
 
-AST_Node *Parser::term() {
-    /*
-    int left = factor();
-    while (m_lookahead != nullptr && (isMul(m_lookahead) || isDiv(m_lookahead))) {
-        if (isMul(m_lookahead)) {
-            eat(Tokens::OPERATOR, '*');
-            int right = term();
-            left *= right;
-        } else if (isDiv(m_lookahead)) {
-            eat(Tokens::OPERATOR, '/');
-            int right = term();
-            left /= right;
-        }
-    }
-    return left;*/
-
-    return binary_expression(&Parser::factor, &Parser::factor, isMul, isDiv);
-}
-
-
-AST_Node *Parser::factor() {
-    return binary_expression(&Parser::primary, &Parser::factor, isFac, isFac);
-}
-
-AST_Node *Parser::primary() {
+AST_Node *Parser::prefix() {
     if (m_lookahead->type == Tokens::SYMBOL && get<char>(m_lookahead->data) == '(') {
         return parenthesizedExpression();
     }
@@ -66,27 +33,22 @@ AST_Node *Parser::primary() {
     if (m_lookahead->type == Tokens::KEYWORD) {
         return functionExpression();
     }
-    const auto token = eat(Tokens::INTEGER);
+    auto token = eat(Tokens::INTEGER);
     auto *node = new AST_Node;
     node->type = "Number";
     node->value = get<int>(token->data);
     return node;
 }
 
-AST_Node *
-Parser::binary_expression(AST_Node *(Parser::*t_left)(), AST_Node *(Parser::*t_right)(), bool (*checker)(TValue *),
-                          bool (*checker2)(TValue *)) {
-    AST_Node *left = (this->*t_left)();
-    while (m_lookahead != nullptr && (checker(m_lookahead) || checker2(m_lookahead))) {
-        auto op = eat(m_lookahead->type)->data;
-        auto *node = new AST_Node;
+AST_Node *Parser::infix(AST_Node *left, Tokens operatorType) {
+    auto token = eat(operatorType);
+    char tokType = get<char>(token->data);
+    int newPrec = get_precedence(tokType);
 
-        node->op = get<char>(op);
-        node->right = (this->*t_right)();
-        node->left = left;
-        node->type = "BinaryExpression";
-        left = node;
-    }
-
-    return left;
+    auto *node = new AST_Node;
+    node->type = "BinaryExpression";
+    node->op = tokType;
+    node->right = expression((tokType == '^') ? newPrec - 1 : newPrec);
+    node->left = left;
+    return node;
 }

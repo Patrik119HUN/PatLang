@@ -30,7 +30,7 @@ struct AST_Node {
     string type;
     string name;
     int value = -1;
-    char op;
+    char op = 0;
     AST_Node *left = nullptr;
     AST_Node *right = nullptr;
 };
@@ -44,18 +44,7 @@ public:
 
     TValue *eat(Tokens tokens, optional<char> data = nullopt);
 
-    AST_Node *
-    binary_expression(AST_Node *(Parser::*t_left)(), AST_Node *(Parser::*t_right)(), bool (*checker)(TValue *),
-                     bool (*checker2)(TValue *));
-
-    AST_Node *expression();
-
-    AST_Node *term();
-
-    AST_Node *factor();
-
-    AST_Node *primary();
-
+    AST_Node *expression(int precedence = 0);
 
     AST_Node *parenthesizedExpression() {
         eat(Tokens::SYMBOL, '(');
@@ -68,7 +57,7 @@ public:
         eat(Tokens::OPERATOR, '-');
         auto *node = new AST_Node;
         node->type = "UnaryExpression";
-        node->value = primary()->value;
+        node->value = expression(get_precedence('u'))->value;
         return node;
     }
 
@@ -83,8 +72,16 @@ public:
         return node;
     }
 
+    AST_Node *prefix();
+
+    AST_Node *infix(AST_Node *left, Tokens operatorType);
+
     AST_Node *parse() {
         return expression();
+    }
+
+    [[nodiscard]] int get_precedence(char token) const {
+        return precedence_map.at(token);
     }
 
 private:
@@ -94,6 +91,8 @@ private:
     map<char, int> precedence_map{{'+', 1},
                                   {'-', 1},
                                   {'*', 2},
-                                  {'/', 2}};
+                                  {'/', 2},
+                                  {'u', 3},
+                                  {'^', 4}};
 
 };

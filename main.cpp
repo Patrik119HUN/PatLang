@@ -17,12 +17,14 @@ void print(AST_Node *node, bool nested) {
         cout << "value: " << node->value << n;
     }
     if (node->left != nullptr) {
-        cout << "left: ";
+        cout << "left: {";
         print(node->left, true);
+        cout << " }";
     }
     if (node->right != nullptr) {
-        cout << "right: ";
+        cout << "right: {";
         print(node->right, true);
+        cout << " }";
     }
 }
 
@@ -63,10 +65,11 @@ private:
     };
 
     int visitUnaryExpression(AST_Node *node) {
+        return 0;
     };
 
     int visitFunction(AST_Node *node) {
-
+        return 0;
     };
 
 
@@ -85,7 +88,7 @@ int main() {
     //print(parser.parse(), false);
 
     NodeVisitor visitor;
-    cout << visitor.visit(parser.parse()) <<endl;
+    cout << visitor.visit(parser.expression(0)) << endl;
     //TokenPrinter tp(&c);
     //tp.print();
     return 0;
