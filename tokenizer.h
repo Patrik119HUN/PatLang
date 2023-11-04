@@ -4,7 +4,26 @@
 
 using namespace std;
 enum class Tokens {
-    INTEGER, BOOLEAN, STRING, OPERATOR, SYMBOL, KEYWORD, IDENTIFIER
+    INTEGER,
+    BOOLEAN,
+    STRING,
+    OPERATOR,
+    SYMBOL,
+    KEYWORD,
+    IDENTIFIER,
+    LEFT_PAR,
+    RIGHT_PAR,
+    SEMICOLON,
+    EQUAL,
+    SUBSTRACITON,
+    ADDITION,
+    MULTIPLY,
+    DIVIDE,
+    POWER,
+    UNARY,
+    SMALLER,
+    LEFT_CURLY_BRACE,
+    RIGHT_CURLY_BRACE,
 };
 
 struct TValue {
@@ -23,7 +42,7 @@ public:
         return tokens;
     }
 
-    TValue *get_next_token() {
+    TValue* get_next_token() {
         if (m_current_token < tokens.size()) {
             return &tokens.at(m_current_token++);
         } else {
@@ -38,7 +57,7 @@ public:
 private:
     vector<TValue> tokens;
     unsigned m_current_token = 0;
-    const unordered_set<string> key_words = {"if", "else", "while", "for", "return", "print" , "sin", "cos"};
+    const unordered_set<string> key_words = {"if", "else", "while", "for", "return", "print", "sin", "cos", "var"};
     const unordered_set<string> boolean_words = {"true", "false"};
 };
 

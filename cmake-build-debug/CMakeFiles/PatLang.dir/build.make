@@ -83,24 +83,10 @@ CMakeFiles/PatLang.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PatLang.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/patri/CLionProjects/PatLang/main.cpp -o CMakeFiles/PatLang.dir/main.cpp.s
 
-CMakeFiles/PatLang.dir/parser.cpp.o: CMakeFiles/PatLang.dir/flags.make
-CMakeFiles/PatLang.dir/parser.cpp.o: ../parser.cpp
-CMakeFiles/PatLang.dir/parser.cpp.o: CMakeFiles/PatLang.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/patri/CLionProjects/PatLang/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/PatLang.dir/parser.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PatLang.dir/parser.cpp.o -MF CMakeFiles/PatLang.dir/parser.cpp.o.d -o CMakeFiles/PatLang.dir/parser.cpp.o -c /mnt/c/Users/patri/CLionProjects/PatLang/parser.cpp
-
-CMakeFiles/PatLang.dir/parser.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PatLang.dir/parser.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/patri/CLionProjects/PatLang/parser.cpp > CMakeFiles/PatLang.dir/parser.cpp.i
-
-CMakeFiles/PatLang.dir/parser.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PatLang.dir/parser.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/patri/CLionProjects/PatLang/parser.cpp -o CMakeFiles/PatLang.dir/parser.cpp.s
-
 CMakeFiles/PatLang.dir/tokenizer.cpp.o: CMakeFiles/PatLang.dir/flags.make
 CMakeFiles/PatLang.dir/tokenizer.cpp.o: ../tokenizer.cpp
 CMakeFiles/PatLang.dir/tokenizer.cpp.o: CMakeFiles/PatLang.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/patri/CLionProjects/PatLang/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/PatLang.dir/tokenizer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/patri/CLionProjects/PatLang/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/PatLang.dir/tokenizer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PatLang.dir/tokenizer.cpp.o -MF CMakeFiles/PatLang.dir/tokenizer.cpp.o.d -o CMakeFiles/PatLang.dir/tokenizer.cpp.o -c /mnt/c/Users/patri/CLionProjects/PatLang/tokenizer.cpp
 
 CMakeFiles/PatLang.dir/tokenizer.cpp.i: cmake_force
@@ -111,18 +97,32 @@ CMakeFiles/PatLang.dir/tokenizer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PatLang.dir/tokenizer.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/patri/CLionProjects/PatLang/tokenizer.cpp -o CMakeFiles/PatLang.dir/tokenizer.cpp.s
 
+CMakeFiles/PatLang.dir/parser.cpp.o: CMakeFiles/PatLang.dir/flags.make
+CMakeFiles/PatLang.dir/parser.cpp.o: ../parser.cpp
+CMakeFiles/PatLang.dir/parser.cpp.o: CMakeFiles/PatLang.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/patri/CLionProjects/PatLang/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/PatLang.dir/parser.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PatLang.dir/parser.cpp.o -MF CMakeFiles/PatLang.dir/parser.cpp.o.d -o CMakeFiles/PatLang.dir/parser.cpp.o -c /mnt/c/Users/patri/CLionProjects/PatLang/parser.cpp
+
+CMakeFiles/PatLang.dir/parser.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PatLang.dir/parser.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/patri/CLionProjects/PatLang/parser.cpp > CMakeFiles/PatLang.dir/parser.cpp.i
+
+CMakeFiles/PatLang.dir/parser.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PatLang.dir/parser.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/patri/CLionProjects/PatLang/parser.cpp -o CMakeFiles/PatLang.dir/parser.cpp.s
+
 # Object files for target PatLang
 PatLang_OBJECTS = \
 "CMakeFiles/PatLang.dir/main.cpp.o" \
-"CMakeFiles/PatLang.dir/parser.cpp.o" \
-"CMakeFiles/PatLang.dir/tokenizer.cpp.o"
+"CMakeFiles/PatLang.dir/tokenizer.cpp.o" \
+"CMakeFiles/PatLang.dir/parser.cpp.o"
 
 # External object files for target PatLang
 PatLang_EXTERNAL_OBJECTS =
 
 PatLang: CMakeFiles/PatLang.dir/main.cpp.o
-PatLang: CMakeFiles/PatLang.dir/parser.cpp.o
 PatLang: CMakeFiles/PatLang.dir/tokenizer.cpp.o
+PatLang: CMakeFiles/PatLang.dir/parser.cpp.o
 PatLang: CMakeFiles/PatLang.dir/build.make
 PatLang: CMakeFiles/PatLang.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/patri/CLionProjects/PatLang/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable PatLang"

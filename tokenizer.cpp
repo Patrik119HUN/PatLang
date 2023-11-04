@@ -32,18 +32,54 @@ void Tokenizer::tokenize(const string &in) {
             } else {
                 current_token += ch;
             }
-        } else if (isspace(ch)) {
-            if (!current_token.empty()) tokenizers(tokens, current_token);
         } else if (isalnum(ch) || ch == '_') {
             current_token += ch;
         } else if (ch == '\"') {
             incoming_string = true;
             current_token.clear();
-        } else if (current_token.empty() &&
-                   (ch == '+' || ch == '-' || ch == '*' || ch == '/') || ch =='^') {
-            tokens.push_back({Tokens::OPERATOR, ch});
-        } else if (current_token.empty() && (ch == '(' || ch == ')')) {
-            tokens.push_back({Tokens::SYMBOL, ch});
+        } else if (ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '^' || ch == '(' || ch == ')' ||
+                   ch == ';' || ch == '=' || ch == '<' || ch == '{' || ch == '}') {
+            if (!current_token.empty()) tokenizers(tokens, current_token);
+            switch (ch) {
+                case ('+'):
+                    tokens.push_back({Tokens::ADDITION, ch});
+                    break;
+                case ('-'):
+                    tokens.push_back({Tokens::SUBSTRACITON, ch});
+                    break;
+                case ('*'):
+                    tokens.push_back({Tokens::MULTIPLY, ch});
+                    break;
+                case ('/'):
+                    tokens.push_back({Tokens::DIVIDE, ch});
+                    break;
+                case ('^'):
+                    tokens.push_back({Tokens::POWER, ch});
+                    break;
+                case ('('):
+                    tokens.push_back({Tokens::LEFT_PAR, ch});
+                    break;
+                case (')'):
+                    tokens.push_back({Tokens::RIGHT_PAR, ch});
+                    break;
+                case ('{'):
+                    tokens.push_back({Tokens::LEFT_CURLY_BRACE, ch});
+                    break;
+                case ('}'):
+                    tokens.push_back({Tokens::RIGHT_CURLY_BRACE, ch});
+                    break;
+                case (';'):
+                    tokens.push_back({Tokens::SEMICOLON, ch});
+                    break;
+                case ('='):
+                    tokens.push_back({Tokens::EQUAL, ch});
+                    break;
+                case ('<'):
+                    tokens.push_back({Tokens::SMALLER, ch});
+                    break;
+            }
+        } else if (isspace(ch)) {
+            if (!current_token.empty()) tokenizers(tokens, current_token);
         } else {
             throw runtime_error(string("Lexer error: Unrecognized character: ").append(1, ch));
         }

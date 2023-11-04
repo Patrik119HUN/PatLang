@@ -1,98 +1,87 @@
 #pragma once
 
-#include "tokenizer.h"
 #include <bits/stdc++.h>
+
+#include <utility>
 #include "token_printer.h"
+#include "header/ASTNode.h"
+#include "symbol_table.h"
 
 using namespace std;
 
-inline bool isAddition(TValue *val) {
-    return val->type == Tokens::OPERATOR && get<char>(val->data) == '+';
-}
-
-inline bool isSub(TValue *val) {
-    return val->type == Tokens::OPERATOR && get<char>(val->data) == '-';
-}
-
-inline bool isMul(TValue *val) {
-    return val->type == Tokens::OPERATOR && get<char>(val->data) == '*';
-}
-
-inline bool isDiv(TValue *val) {
-    return val->type == Tokens::OPERATOR && get<char>(val->data) == '/';
-}
-
-inline bool isFac(TValue *val) {
-    return val->type == Tokens::OPERATOR && get<char>(val->data) == '^';
-}
-
-struct AST_Node {
-    string type;
-    string name;
-    int value = -1;
-    char op = 0;
-    AST_Node *left = nullptr;
-    AST_Node *right = nullptr;
-};
-
 class Parser {
 public:
-
-    explicit Parser(Tokenizer *t_tokenizer) : mp_tokenizer(t_tokenizer) {
+    explicit Parser(Tokenizer* t_tokenizer) : mp_tokenizer(t_tokenizer) {
         m_lookahead = mp_tokenizer->get_next_token();
     };
 
-    TValue *eat(Tokens tokens, optional<char> data = nullopt);
+    TValue* eat(Tokens tokens);
 
-    AST_Node *expression(int precedence = 0);
+    ASTNode* expression(int precedence = 0);
 
-    AST_Node *parenthesizedExpression() {
-        eat(Tokens::SYMBOL, '(');
-        auto expr = expression();
-        eat(Tokens::SYMBOL, ')');
-        return expr;
+    ASTNode* parenthesizedExpression();
+
+    UnaryExpressionNode* unaryExpression() {
+        eat(Tokens::SUBSTRACITON);
+        return new UnaryExpressionNode(expression(get_precedence(Tokens::UNARY)));
     }
 
-    AST_Node *unaryExpression() {
-        eat(Tokens::OPERATOR, '-');
-        auto *node = new AST_Node;
-        node->type = "UnaryExpression";
-        node->value = expression(get_precedence('u'))->value;
-        return node;
+    FunctionNode* functionExpression(string id) {
+        return new FunctionNode(parenthesizedExpression(), std::move(id));
     }
 
-    AST_Node *functionExpression() {
-        auto token = eat(Tokens::KEYWORD);
-        //if (tok == "sin") ret = static_cast<int>(sin(parenthesizedExpression()));
-        //if (tok == "cos") ret =  static_cast<int>(cos(parenthesizedExpression()));
-        auto *node = new AST_Node;
-        node->type = "Function";
-        node->name = get<string>(token->data);
-        node->value = parenthesizedExpression()->value;
-        return node;
+    NumberNode* prefix();
+
+    BinaryExpressionNode* infix(NumberNode* left, Tokens operatorType);
+
+    ExpressionStatementNode* expressionStatement() {
+        auto expression = this->expression();
+        eat(Tokens::SEMICOLON);
+        return new ExpressionStatementNode(expression);
     }
 
-    AST_Node *prefix();
+    PrintNode* printStatement();
 
-    AST_Node *infix(AST_Node *left, Tokens operatorType);
+    VariableStatementNode* variableStatement();
 
-    AST_Node *parse() {
-        return expression();
+    ASTNode* statement();
+
+    ASTNode* variableOrfunctionExpression();
+
+    VariableNode* variable(const string &name) {
+        return new VariableNode(name);
     }
 
-    [[nodiscard]] int get_precedence(char token) const {
+    ForNode* forStatement();
+
+    vector<ASTNode*> statement_list();
+
+    ProgramNode* program() {
+        return new ProgramNode(statement_list());
+    }
+    AssignmentNode* assignVal();
+    [[nodiscard]] int get_precedence(Tokens token) const try {
         return precedence_map.at(token);
+    } catch (const std::out_of_range &e) {
+        return 0;
     }
 
 private:
-    TValue *m_lookahead;
+    TValue* m_lookahead;
     TokenPrinter m_tp;
-    Tokenizer *mp_tokenizer;
-    map<char, int> precedence_map{{'+', 1},
+    Tokenizer* mp_tokenizer;
+    map<Tokens, int> precedence_map{{Tokens::ADDITION,     1},
+                                    {Tokens::SUBSTRACITON, 1},
+                                    {Tokens::SMALLER,      1},
+                                    {Tokens::MULTIPLY,     2},
+                                    {Tokens::DIVIDE,       2},
+                                    {Tokens::UNARY,        3},
+                                    {Tokens::POWER,        4}};
+    /*map<char, int> precedence_map{{'+', 1},
                                   {'-', 1},
                                   {'*', 2},
                                   {'/', 2},
                                   {'u', 3},
-                                  {'^', 4}};
+                                  {'^', 4}};*/
 
 };

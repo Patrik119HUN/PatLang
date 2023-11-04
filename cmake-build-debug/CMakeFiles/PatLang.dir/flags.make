@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I/mnt/c/Users/patri/CLionProjects/PatLang/PatLang -I/mnt/c/Users/patri/CLionProjects/PatLang/header
 
-CXX_FLAGS = -g -std=gnu++23
+CXX_FLAGS = -g
 
