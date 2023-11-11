@@ -332,6 +332,7 @@ CMakeFiles/PatLang.dir/parser.cpp.o: \
  /usr/include/c++/11/variant \
  /mnt/c/Users/patri/CLionProjects/PatLang/token_printer.h \
  /mnt/c/Users/patri/CLionProjects/PatLang/tokenizer.h \
- /mnt/c/Users/patri/CLionProjects/PatLang/header/ASTNode.h \
- /mnt/c/Users/patri/CLionProjects/PatLang/header/visitor_interface.h \
+ /mnt/c/Users/patri/CLionProjects/PatLang/ASTNode.h \
+ /mnt/c/Users/patri/CLionProjects/PatLang/node_interface.h \
+ /mnt/c/Users/patri/CLionProjects/PatLang/visitor_interface.h \
  /mnt/c/Users/patri/CLionProjects/PatLang/symbol_table.h

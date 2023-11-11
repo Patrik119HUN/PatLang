@@ -327,9 +327,9 @@ CMakeFiles/PatLang.dir/main.cpp.o: \
  /usr/include/c++/11/bits/uses_allocator_args.h \
  /usr/include/c++/11/variant \
  /mnt/c/Users/patri/CLionProjects/PatLang/tokenizer.h \
- /mnt/c/Users/patri/CLionProjects/PatLang/token_printer.h \
  /mnt/c/Users/patri/CLionProjects/PatLang/parser.h \
- /mnt/c/Users/patri/CLionProjects/PatLang/header/ASTNode.h \
- /mnt/c/Users/patri/CLionProjects/PatLang/header/visitor_interface.h \
+ /mnt/c/Users/patri/CLionProjects/PatLang/ASTNode.h \
+ /mnt/c/Users/patri/CLionProjects/PatLang/node_interface.h \
+ /mnt/c/Users/patri/CLionProjects/PatLang/visitor_interface.h \
  /mnt/c/Users/patri/CLionProjects/PatLang/symbol_table.h \
- /mnt/c/Users/patri/CLionProjects/PatLang/header/code_generator.h
+ /mnt/c/Users/patri/CLionProjects/PatLang/code_generator.h

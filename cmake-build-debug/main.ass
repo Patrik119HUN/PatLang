@@ -1,5 +1,18 @@
-for(var i = 1; i < 3; i = i+1; ){
-    for(var j = 1; j < 3; j = j+1; ){
-        print(j+i);
+var i = 1;
+var name = "alma";
+var namer = "banan";
+func a(k,z){
+    for(var y = 0; y < i; y = y + 1;){
+        if(z==i;){
+            print(i);
+        }
+        if(k==i;){
+            print(name+namer+"kuki");
+        }
     }
+}
+
+while(i != 5){
+    a(1,2);
+    i = i+1;
 }

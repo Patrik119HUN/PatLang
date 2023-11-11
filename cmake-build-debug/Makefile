@@ -153,54 +153,6 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PatLang.dir/build.make CMakeFiles/PatLang.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-parser.o: parser.cpp.o
-.PHONY : parser.o
-
-# target to build an object file
-parser.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PatLang.dir/build.make CMakeFiles/PatLang.dir/parser.cpp.o
-.PHONY : parser.cpp.o
-
-parser.i: parser.cpp.i
-.PHONY : parser.i
-
-# target to preprocess a source file
-parser.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PatLang.dir/build.make CMakeFiles/PatLang.dir/parser.cpp.i
-.PHONY : parser.cpp.i
-
-parser.s: parser.cpp.s
-.PHONY : parser.s
-
-# target to generate assembly for a file
-parser.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PatLang.dir/build.make CMakeFiles/PatLang.dir/parser.cpp.s
-.PHONY : parser.cpp.s
-
-tokenizer.o: tokenizer.cpp.o
-.PHONY : tokenizer.o
-
-# target to build an object file
-tokenizer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PatLang.dir/build.make CMakeFiles/PatLang.dir/tokenizer.cpp.o
-.PHONY : tokenizer.cpp.o
-
-tokenizer.i: tokenizer.cpp.i
-.PHONY : tokenizer.i
-
-# target to preprocess a source file
-tokenizer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PatLang.dir/build.make CMakeFiles/PatLang.dir/tokenizer.cpp.i
-.PHONY : tokenizer.cpp.i
-
-tokenizer.s: tokenizer.cpp.s
-.PHONY : tokenizer.s
-
-# target to generate assembly for a file
-tokenizer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PatLang.dir/build.make CMakeFiles/PatLang.dir/tokenizer.cpp.s
-.PHONY : tokenizer.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -213,12 +165,6 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... parser.o"
-	@echo "... parser.i"
-	@echo "... parser.s"
-	@echo "... tokenizer.o"
-	@echo "... tokenizer.i"
-	@echo "... tokenizer.s"
 .PHONY : help
 
 

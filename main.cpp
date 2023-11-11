@@ -1,14 +1,13 @@
 #include <iostream>
 #include <bits/stdc++.h>
 #include "tokenizer.h"
-#include "token_printer.h"
 #include "parser.h"
 #include "code_generator.h"
 
 using namespace std;
 
 /*
-void print(ASTNode *node, bool nested) {
+void print(INode *node, bool nested) {
     string n = ", ";
     if (!nested) {
         n = ",\n";

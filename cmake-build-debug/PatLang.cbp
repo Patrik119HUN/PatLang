@@ -86,19 +86,16 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/mnt/c/Users/patri/CLionProjects/PatLang/header/ASTNode.h">
+		<Unit filename="/mnt/c/Users/patri/CLionProjects/PatLang/ASTNode.h">
 			<Option target="PatLang"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/patri/CLionProjects/PatLang/header/code_generator.h">
-			<Option target="PatLang"/>
-		</Unit>
-		<Unit filename="/mnt/c/Users/patri/CLionProjects/PatLang/header/visitor_interface.h">
+		<Unit filename="/mnt/c/Users/patri/CLionProjects/PatLang/code_generator.h">
 			<Option target="PatLang"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/patri/CLionProjects/PatLang/main.cpp">
 			<Option target="PatLang"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/patri/CLionProjects/PatLang/parser.cpp">
+		<Unit filename="/mnt/c/Users/patri/CLionProjects/PatLang/node_interface.h">
 			<Option target="PatLang"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/patri/CLionProjects/PatLang/parser.h">
@@ -107,13 +104,10 @@
 		<Unit filename="/mnt/c/Users/patri/CLionProjects/PatLang/symbol_table.h">
 			<Option target="PatLang"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/patri/CLionProjects/PatLang/token_printer.h">
-			<Option target="PatLang"/>
-		</Unit>
-		<Unit filename="/mnt/c/Users/patri/CLionProjects/PatLang/tokenizer.cpp">
-			<Option target="PatLang"/>
-		</Unit>
 		<Unit filename="/mnt/c/Users/patri/CLionProjects/PatLang/tokenizer.h">
+			<Option target="PatLang"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/patri/CLionProjects/PatLang/visitor_interface.h">
 			<Option target="PatLang"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/patri/CLionProjects/PatLang/CMakeLists.txt">
